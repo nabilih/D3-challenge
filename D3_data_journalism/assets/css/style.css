@@ -29,3 +29,10 @@ body {
   margin: 0;
   font-size: 16px;
 }
+
+.axis-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  fill: #0e0e0f;
+  text-anchor: middle;
+}
