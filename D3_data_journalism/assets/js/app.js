@@ -89,26 +89,34 @@ function renderText(textGroup, newXScale, newYScale, chosenXAxis, chosenYAxis) {
 function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
     var xLabel;
+    var xUnit;
     var yLabel;
+    var yUnit;
 
     if (chosenXAxis === "age") {
         xLabel = "Age:";
+        xUnit = "";
     }
     else if (chosenXAxis === "income") {
         xLabel = "Income:";
+        xUnit = "";
     }
     else {
         xLabel = "Poverty:";
+        xUnit = " %";
     }
 
     if (chosenYAxis === "obesity") {
-        yLabel = "Obesity";
+        yLabel = "Obesity:";
+        yUnit = "%"
     }
     else if (chosenYAxis === "smokes") {
         yLabel = "Smokes:";
+        yUnit = "%"
     }
     else {
         yLabel = "Lacks Healthcare:";
+        yUnit = "%"
     };
 
     // Create the tool tip object
@@ -116,10 +124,10 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
       .attr("class", "d3-tip")
       .offset([70, -50])
       .html(function(d) {
-        return (`${d.state}<br>${xLabel} ${d[chosenXAxis]}<br>${yLabel} ${d[chosenYAxis]}`);
+        return (`${d.state}<br>${xLabel} ${d[chosenXAxis]} ${xUnit}<br>${yLabel} ${d[chosenYAxis]} ${yUnit}`);
       });
  
-    // attach the tool tip to the circles group
+    // attach the tool tip to the circles group}
     circlesGroup.call(toolTip);
 
     // on mouse-over show tooltip; on mouse-out hide tooltip
@@ -136,7 +144,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 // import data
 d3.csv('assets/data/data.csv').then(function(data) {
     // uncomment line below to check the data in console
-    //console.log(data);
+    console.log(data);
 
     // Step 1: Parse Data/Cast as numbers
     // ==============================
